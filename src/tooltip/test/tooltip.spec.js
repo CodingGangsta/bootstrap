@@ -27,7 +27,7 @@ describe('tooltip', function() {
   }));
 
   afterEach(function() {
-    $document.off('keypress');
+    $document.off('keyup');
   });
 
   function trigger(element, evt) {
@@ -179,7 +179,6 @@ describe('tooltip', function() {
     expect(elm.attr('alt')).toBe(scope.alt);
 
     ttScope = angular.element(elmBody.children()[1]).isolateScope();
-    expect(ttScope.placement).toBe('top');
     expect(ttScope.content).toBe(scope.tooltipMsg);
 
     trigger(elm, 'mouseleave');
@@ -188,7 +187,6 @@ describe('tooltip', function() {
     trigger(elm, 'mouseenter');
 
     ttScope = angular.element(elmBody.children()[1]).isolateScope();
-    expect(ttScope.placement).toBe('top');
     expect(ttScope.content).toBe(scope.tooltipMsg);
   }));
 
@@ -297,10 +295,9 @@ describe('tooltip', function() {
       trigger(elm, 'mouseenter');
       expect(tooltipScope.isOpen).toBe(false);
 
-      $timeout.flush(500);
-      expect(tooltipScope.isOpen).toBe(false);
       elmScope.disabled = true;
       elmScope.$digest();
+      $timeout.flush(500);
 
       expect(tooltipScope.isOpen).toBe(false);
     });
@@ -345,22 +342,24 @@ describe('tooltip', function() {
       expect(tooltipScope.isOpen).toBe(true);
       expect(tooltipScope2.isOpen).toBe(true);
 
-      var evt = $.Event('keypress');
+      var evt = $.Event('keyup');
       evt.which = 27;
 
       $document.trigger(evt);
       tooltipScope.$digest();
       tooltipScope2.$digest();
+      $timeout.flush();
 
       expect(tooltipScope.isOpen).toBe(true);
       expect(tooltipScope2.isOpen).toBe(false);
 
-      var evt2 = $.Event('keypress');
+      var evt2 = $.Event('keyup');
       evt2.which = 27;
 
       $document.trigger(evt2);
       tooltipScope.$digest();
       tooltipScope2.$digest();
+      $timeout.flush(500);
 
       expect(tooltipScope.isOpen).toBe(false);
       expect(tooltipScope2.isOpen).toBe(false);

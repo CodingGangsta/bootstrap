@@ -397,7 +397,7 @@ describe('datepicker popup', function() {
       it('stops the ESC key from propagating if the dropdown is open, but not when closed', function() {
         var documentKey = -1;
         var getKey = function(evt) { documentKey = evt.which; };
-        $document.bind('keydown', getKey);
+        $document.on('keydown', getKey);
 
         triggerKeyDown(inputEl, 'esc');
         expect(documentKey).toBe(-1);
@@ -405,7 +405,7 @@ describe('datepicker popup', function() {
         triggerKeyDown(inputEl, 'esc');
         expect(documentKey).toBe(27);
 
-        $document.unbind('keydown', getKey);
+        $document.off('keydown', getKey);
       });
     });
 
@@ -1344,7 +1344,7 @@ describe('datepicker popup', function() {
       $compile(elm)($rootScope);
       $rootScope.$digest();
 
-      expect(elm.children().eq(1).html()).toBe('baz');
+      expect(elm.children().eq(1).html()).toBe('<div>baz</div>');
     });
   });
 
@@ -1367,7 +1367,7 @@ describe('datepicker popup', function() {
 
       var datepicker = elm.find('[uib-datepicker]');
 
-      expect(datepicker.html()).toBe('baz');
+      expect(datepicker.html()).toBe('<div>baz</div>');
     });
   });
 

@@ -1,8 +1,16 @@
+# Project Status (please read)
+Due to [Angular](https://angular.io)'s continued adoption, our creation of [the Angular version of this library](https://ng-bootstrap.github.io), and the the project maintainers' moving on to other things, this project is considered feature-complete and is no longer being maintained.
+
+We thank you for all your contributions over the years and hope you've enjoyed using this library as much as we've had developing and maintaining it.  It would not have been successful without them.
+
+---
+
 ### UI Bootstrap - [AngularJS](http://angularjs.org/) directives specific to [Bootstrap](http://getbootstrap.com)
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angular-ui/bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://secure.travis-ci.org/angular-ui/bootstrap.svg)](http://travis-ci.org/angular-ui/bootstrap)
 [![devDependency Status](https://david-dm.org/angular-ui/bootstrap/dev-status.svg?branch=master)](https://david-dm.org/angular-ui/bootstrap#info=devDependencies)
+[![CDNJS](https://img.shields.io/cdnjs/v/angular-ui-bootstrap.svg)](https://cdnjs.com/libraries/angular-ui-bootstrap/)
 
 ### Quick links
 - [Demo](#demo)
@@ -27,7 +35,7 @@
 
 # Demo
 
-Do you want to see directives in action? Visit http://angular-ui.github.io/bootstrap/!
+Do you want to see directives in action? Visit https://angular-ui.github.io/bootstrap/!
 
 # Angular 2
 
@@ -73,7 +81,7 @@ PM> Install-Package Angular.UI.Bootstrap
 
 #### Custom build
 
-Head over to http://angular-ui.github.io/bootstrap/ and hit the *Custom build* button to create your own custom UI Bootstrap build, just the way you like it.
+Head over to https://angular-ui.github.io/bootstrap/ and hit the *Custom build* button to create your own custom UI Bootstrap build, just the way you like it.
 
 #### Manual download
 
@@ -118,6 +126,7 @@ If you would prefer not to load your css through your JavaScript file loader/bun
 * datepicker
 * datepickerPopup
 * dropdown
+* modal
 * popover
 * position
 * timepicker
@@ -130,8 +139,12 @@ The other modules, such as `accordion` in the example below, do not have CSS res
 import accordion from 'angular-ui-bootstrap/src/accordion';
 import typeahead from 'angular-ui-bootstrap/src/typeahead/index-nocss.js';
 
-angular.module('myModule', [accordion, datepicker]);
+angular.module('myModule', [accordion, typeahead]);
 ```
+
+# Versioning
+
+Pre-2.0.0 does not follow a particular versioning system. 2.0.0 and onwards follows [semantic versioning](http://semver.org/). All release changes can be viewed on our [changelog](CHANGELOG.md).
 
 # Support
 
